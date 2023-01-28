@@ -1,3 +1,5 @@
+import { useConfig } from 'nextra-theme-docs'
+
 export default {
   logo: <span>Te Wāhi Learn</span>,
   project: {
