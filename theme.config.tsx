@@ -1,9 +1,14 @@
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
+ 
 export default {
-  head: (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="Te Wāhi Auaha" />
-      <meta property="og:description" content="A learning hub" />
+  head: () => {
+    const { asPath } = useRouter()
+    const { frontMatter } = useConfig()
+    return <>
+      <meta property="og:url" content={`https://my-app.com${asPath}`} />
+      <meta property="og:title" content={frontMatter.title || 'Te Wāhi Learn'} />
+      <meta property="og:description" content={frontMatter.description || 'A learning hub'} />
     </>
-  ),
+  },
 }
