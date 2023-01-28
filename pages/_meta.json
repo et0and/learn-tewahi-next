@@ -1,16 +1,36 @@
 {
-  "index": "Introduction",
-  "how-to": "How to ...",
-  "tools": "Tools",
-  "projects": "Projects",
+  "index": {
+    "title": "Introduction",
+    "type": "page"
+  },
+  "how-to": {
+    "title": "How to ...",
+    "type": "page"
+  },
+  "tools": {
+    "title": "Tools",
+    "type": "page"
+  },
+  "projects": {
+    "title": "Projects",
+    "type": "page"
+  },
   "about": {
     "title": "About",
     "type": "page"
   },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "mailto:t.hackshaw@tgs.school.nz",
-    "newWindow": true
+  "info": {
+    "title": "Info",
+    "type": "menu",
+    "items": {
+      "about": {
+        "title": "About",
+        "href": "/about"
+      },
+      "contact": {
+        "title": "Contact ↗",
+        "href": "mailto:t.hackshaw@tgs.school.nz"
+      }
+    }
   }
 }
