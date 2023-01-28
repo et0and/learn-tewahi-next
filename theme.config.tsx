@@ -10,6 +10,12 @@ const config: DocsThemeConfig = {
 }
 
 export default {
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – Te Wāhi Learn'
+    }
+  },
+
   head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
