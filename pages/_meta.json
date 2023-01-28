@@ -19,6 +19,11 @@
     "title": "Info",
     "type": "menu",
     "items": {
+      "about": {
+        "title": "About",
+        "href": "/about",
+        "display": "hidden"
+      },
       "contact": {
         "title": "Contact ↗",
         "href": "mailto:t.hackshaw@tgs.school.nz"
