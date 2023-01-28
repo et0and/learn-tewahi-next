@@ -25,10 +25,8 @@ export default {
         )}`
       }
     },
-    const EDIT_TEXT = {
-      'en-US': '',
-      'es-ES': '',
-      ru: ''
+    editLink: {
+      text: '',
     },
     head: (
       <>
