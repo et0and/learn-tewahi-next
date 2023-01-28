@@ -1,5 +1,5 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
   logo: <span>Te Wāhi Learn</span>,
@@ -10,17 +10,13 @@ const config: DocsThemeConfig = {
 }
 
 export default {
-  useNextSeoProps() {
-    return {
-      titleTemplate: '%s – Te Wāhi Learn'
-    }
-  },
-
-  head: (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="Te Wāhi Learn" />
-      <meta property="og:description" content="A learning hub" />
+  head: () => {
+    const { asPath } = useRouter()
+    const { frontMatter } = useConfig()
+    return <>
+      <meta property="og:url" content={`https://my-app.com${asPath}`} />
+      <meta property="og:title" content={frontMatter.title || 'Te Wāhi Learn'} />
+      <meta property="og:description" content={frontMatter.description || 'Te Wāhi Learn'} />
     </>
-  ),
+  },
 }
