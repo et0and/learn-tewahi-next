@@ -3,12 +3,9 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
   logo: <span>Te Wāhi Learn</span>,
-  project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
-  },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: 'https://tewahi.com',
   footer: {
-    text: 'Nextra Docs Template',
+    text: 'Te Wāhi Auaha, 2023',
   },
 }
 
