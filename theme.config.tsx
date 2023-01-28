@@ -5,7 +5,12 @@ export default {
   },
   footer: {
     text: <span>
-      MIT {new Date().getFullYear()} © <a href="https://tewahi.com" target="_blank">Te Wāhi Auaha</a>.
+      {new Date().getFullYear()} © <a href="https://tewahi.com" target="_blank">Te Wāhi Auaha</a>.
     </span>,
-    }
+    },
+    useNextSeoProps() {
+      return {
+        titleTemplate: '%s – Te Wāhi Learn'
+      }
+    },
 }
