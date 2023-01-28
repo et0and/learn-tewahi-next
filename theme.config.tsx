@@ -9,4 +9,21 @@ const config: DocsThemeConfig = {
   },
 }
 
-export default config
+export default {
+  useNextSeoProps() {
+    const { route } = useRouter()
+    if (route !== '/') {
+      return {
+        titleTemplate: '%s – Te Wāhi Learn'
+      }
+    }
+  },
+
+  head: (
+    <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:title" content="Te Wāhi Learn" />
+      <meta property="og:description" content="A learning hub" />
+    </>
+  ),
+}
