@@ -13,6 +13,21 @@ export default {
         titleTemplate: '%s – Te Wāhi Learn'
       }
     },
+    feedback: {
+      content: '',
+      labels: 'feedback',
+      useLink() {
+        const config = useConfig()
+        return `https://google.com/search?q=${encodeURIComponent(
+          `Feedback for ${config.title}`
+        )}`
+      }
+    },
+    editLink: {
+      'en-US': '',
+      'es-ES': '',
+      ru: ''
+    },
     head: (
       <>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
