@@ -3,5 +3,9 @@ export default {
   project: {
     link: 'https://github.com/et0and/learn-tewahi-next',
   },
-  // ...
+  footer: {
+    text: <span>
+      MIT {new Date().getFullYear()} © <a href="https://tewahi.com" target="_blank">Te Wāhi Auaha</a>.
+    </span>,
+    }
 }
