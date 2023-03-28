@@ -2,7 +2,7 @@
 
 This is an online hub created with [Nextra](https://nextra.site).
 
-[![](.github/screenshot.png)](https://learn.tewahi.com)
+[![](screenshot.png)](https://learn.tewahi.com)
 
 ## Deploy your own 
 
