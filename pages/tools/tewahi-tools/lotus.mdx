@@ -1,0 +1,30 @@
+# Lotus (alpha)
+
+[Lotus](https://lotus.tewahi.com/) is an online web app for recording local histories and preserving these as QR codes.
+
+![Lotus gif](https://github.com/et0and/lotus/raw/main/demo.gif)
+
+Drag and drop any type of file (audio recording, image, video, PDF, etc) and Lotus will upload this onto the [Interplanetary File System (IPFS for short)](https://ipfs.io). Files are uploaded and distributed across IPFS and the [Filecoin Network](https://en.wikipedia.org/wiki/Filecoin), allowing for the decentralised archival of digital, historical artifacts that do not have a single point of failure. 
+
+Upon uploading, a QR code is generated with a direct link to the uploaded file. The link contains a Content Identifier (CID), a unique address that allows it to be retrieved from any IPFS gateway in the world. This means that should Te Wāhi's digital infrastructure ever break or disappear, one simply only needs to replace the prefix of the link and keep the CID to view the file again.
+
+For example:
+
+```Markdown
+`https://waharoa.tewahi.me/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-redirect`
+
+Keep the CID and swap the gateway:
+
+`https://ipfs.io/ipfs/bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m#x-ipfs-companion-no-redirect`
+
+```
+
+Presently, many [IPFS] nodes are unfortunately blocked by school networks. The currently version of Lotus uses a traditional server backend to store and fetch files, but for those who want to use the IPFS system can do so via [lotus-ipfs.tewahi.com](https://lotus-ipfs.tewahi.com). The system is still in alpha as we make the site faster and more stable across various network scenarios.
+
+Te Wāhi would like to acknowledge and thank [Estuary](https://estuary.tech), [Protocol Labs](https://protocol.ai/) and [Jimmy Lee](https://jimmyl.ee) for generously providing us with an API key to store files for free onto IPFS and Filecoin.
+
+## Downloads
+
+[Open Lotus](https://lotus.tewahi.com)
+
+[GitHub](https://github.com/et0and/lotus)
