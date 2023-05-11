@@ -1,18 +1,6 @@
 {
-  "3dprocks": "3DP Rocks",
-  "crstudio": "CR Studio",
-  "cura": "Cura",
-  "dotgrid": "Dotgrid",
-  "fusion360": "Fusion 360",
-  "itslitho": "ItsLitho",
-  "meshmixer": "Meshmixer",
-  "monstermash": "MonsterMash",
-  "onshape": "OnShape",
-  "polycam": "Polycam",
-  "sketchup": "SketchUp",
-  "stable-diffusion": "Stable Diffusion",
-  "tinkercad": "Tinkercad",
-  "thingiverse": "Thingiverse",
-  "vectary": "Vectary",
-  "zbrush": "ZBrush"
+  "3D-printing": "3D Printing",
+  "laser-cutting": "Laser Cutting",
+  "laser-engraving": "Laser Engraving",
+  "other": "Other Tools"
 }
