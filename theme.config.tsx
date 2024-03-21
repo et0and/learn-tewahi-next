@@ -22,6 +22,15 @@ export default {
     `}</style>
   </span>,
 
+  banner: {
+    key: '2.0-release',
+    text: (
+      
+        🚧 A new version of Learn is in development. 
+      
+    )
+  },
+
   footer: {
     text: <span>
       {new Date().getFullYear()} © <a href="https://tewahi.com" target="_blank">Te Wāhi Auaha</a>.
