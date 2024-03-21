@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/et0and/learn-tewahi-next.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Tom Hackshaw <tom@tomhackshaw.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
+    "url": "https://github.com/et0and/learn-tewahi-next.git/issues"
   },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
+  "homepage": "https://github.com/et0and/learn-tewahi-next.git#readme",
   "dependencies": {
     "next": "^13.0.6",
     "nextra": "2.0.1",
