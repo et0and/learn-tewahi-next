@@ -25,9 +25,9 @@ export default {
   banner: {
     key: '2.0-release',
     text: (
-      
+      <p>
         🚧 A new version of Learn is in development. 
-      
+      </p>
     )
   },
 
