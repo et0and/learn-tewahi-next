@@ -53,7 +53,7 @@
   }
   
   .nextra-nav-container nav {
-    height: 7rem;
+    height: 4rem;
   }
   
   aside {
@@ -143,6 +143,7 @@
   html[class~="dark"] .nextra-search input:focus {
     background-color: #0d0d0d;
     border-color: #fff;
+    border-width: 1px;
   }
   
   html[class~="dark"] .nextra-search input::placeholder {
