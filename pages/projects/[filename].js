@@ -50,7 +50,7 @@ const ProjectPage = (props) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const variables = { relativePath: `${params.filename}.md` }
+  const variables = { relativePath: `${params.filename}.mdx` }
   const props = await client.queries.page(variables)
   return {
     props: { ...props, variables },
