@@ -6,6 +6,6 @@ const withNextra = require('nextra')({
 module.exports = withNextra(),
 {
   images: {
-    domains: ['assets.tina.io'],
+    domains: ['assets.tina.io','media.tewahi.com','cdn.tewahi.me','f005.backblazeb2.com'],
   },
 }
