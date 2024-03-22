@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useTina } from 'tinacms/dist/react'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
-import client from '../../../tina/__generated__/client.js'
+import client from '../../../tina/__generated__/client'
 
 const OtherPage = (props) => {
   const { data } = useTina({
