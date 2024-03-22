@@ -50,29 +50,6 @@ const HowToPage = (props) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  let data = {}
-  let query = {}
-  let variables = { relativePath: `${params.filename}.mdx` }
-  try {
-    const res = await client.queries.howto(variables)
-    query = res.query
-    data = res.data
-    variables = res.variables
-  } catch {
-    // swallow errors related to document creation
-  }
-
-  return {
-    props: {
-      variables: variables,
-      data: data,
-      query: query,
-      //myOtherProp: 'some-other-data',
-    },
-  }
-}
-
-export const getStaticProps = async ({ params }) => {
   const variables = { relativePath: `${params.filename}.mdx` }
  const props = await client.queries.page(variables)
   return {
