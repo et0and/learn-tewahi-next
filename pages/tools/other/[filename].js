@@ -50,34 +50,33 @@ const OtherPage = (props) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  let data = {}
-  let query = {}
-  let variables = { relativePath: `${params.filename}.mdx` }
-  try {
-    const res = await client.queries.other(variables)
-    query = res.query
-    data = res.data
-    variables = res.variables
-  } catch {
-    // swallow errors related to document creation
+    let data = {}
+    let query = {}
+    let variables = { relativePath: `${params.filename}.mdx` }
+    try {
+      const res = await client.queries.other({ id: params.filename })
+      query = res.query
+      data = res.data
+      variables = res.variables
+    } catch {
+      // swallow errors related to document creation
+    }
+  
+    return {
+      props: {
+        variables: variables,
+        data: data,
+        query: query,
+      },
+    }
   }
-
-  return {
-    props: {
-      variables: variables,
-      data: data,
-      query: query,
-      //myOtherProp: 'some-other-data',
-    },
-  }
-}
 
 export const getStaticPaths = async () => {
   const postsListData = await client.queries.otherConnection()
 
   return {
     paths: postsListData.data.otherConnection.edges.map((other) => ({
-      params: { filename: other.node._sys.filename },
+      params: { filename: other.node._sys.id },
     })),
     fallback: false,
   }

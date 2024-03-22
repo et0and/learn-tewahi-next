@@ -54,7 +54,7 @@ export const getStaticProps = async ({ params }) => {
   let query = {}
   let variables = { relativePath: `${params.filename}.mdx` }
   try {
-    const res = await client.queries.howto(variables)
+    const res = await client.queries.howto({ id: params.filename })
     query = res.query
     data = res.data
     variables = res.variables
@@ -67,7 +67,6 @@ export const getStaticProps = async ({ params }) => {
       variables: variables,
       data: data,
       query: query,
-      //myOtherProp: 'some-other-data',
     },
   }
 }
@@ -77,7 +76,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: postsListData.data.howtoConnection.edges.map((howto) => ({
-      params: { filename: howto.node._sys.filename },
+      params: { filename: `${howto.node._sys.id}` },
     })),
     fallback: false,
   }

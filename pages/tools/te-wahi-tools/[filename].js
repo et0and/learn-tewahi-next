@@ -55,7 +55,7 @@ export const getStaticProps = async ({ params }) => {
   let query = {}
   let variables = { relativePath: `${params.filename}.mdx` }
   try {
-    const res = await client.queries.tewahitools(variables)
+    const res = await client.queries.tewahitools({ id: params.filename })
     query = res.query
     data = res.data
     variables = res.variables
@@ -68,7 +68,6 @@ export const getStaticProps = async ({ params }) => {
       variables: variables,
       data: data,
       query: query,
-      //mytewahitoolsProp: 'some-tewahitools-data',
     },
   }
 }
@@ -78,7 +77,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: postsListData.data.tewahitoolsConnection.edges.map((tewahitools) => ({
-      params: { filename: tewahitools.node._sys.filename },
+      params: { filename: tewahitools.node._sys.id },
     })),
     fallback: false,
   }
