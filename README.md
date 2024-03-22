@@ -4,7 +4,9 @@ This is an online hub created with [Nextra](https://nextra.site).
 
 [![](screenshot.png)](https://learn.tewahi.com)
 
-## Deploy your own 
+It uses [Tina](https://tina.io) as a headless CMS to manage content.
+
+## Deploy your own
 
 Click the button to clone this repository and deploy it on Vercel:
 
