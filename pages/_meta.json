@@ -14,19 +14,5 @@
   "projects": {
     "title": "Projects",
     "type": "page"
-  },
-    "info": {
-    "title": "Info",
-    "type": "menu",
-    "items": {
-      "contact": {
-        "title": "Contact ↗",
-        "href": "mailto:t.hackshaw@tgs.school.nz"
-      },
-      "status": {
-        "title": "Status 🟢",
-        "href": "https://tewahiauaha.statuspage.io"
-      }
-    }
   }
 }
