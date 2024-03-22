@@ -82,7 +82,7 @@ export const getStaticPaths = async () => {
     // Add unique paths to the Set
     printListData.data.printConnection.edges.forEach((print) => {
       allPaths.add({
-        params: { filename: print.node._sys.filename },
+        params: { filename: print.node._sys.filename.replace('.mdx', '') },
       });
     });
   } catch (error) {

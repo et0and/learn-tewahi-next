@@ -83,7 +83,7 @@ export const getStaticPaths = async () => {
     // Add unique paths to the Set
     tewahitoolsListData.data.tewahitoolsConnection.edges.forEach((tewahitools) => {
       allPaths.add({
-        params: { filename: tewahitools.node._sys.filename },
+        params: { filename: tewahitools.node._sys.filename.replace('.mdx', '') },
       });
     });
   } catch (error) {

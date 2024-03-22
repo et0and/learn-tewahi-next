@@ -82,7 +82,7 @@ export const getStaticPaths = async () => {
     // Add unique paths to the Set
     otherListData.data.otherConnection.edges.forEach((other) => {
       allPaths.add({
-        params: { filename: other.node._sys.filename },
+        params: { filename: other.node._sys.filename.replace('.mdx', '') },
       });
     });
   } catch (error) {

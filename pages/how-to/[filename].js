@@ -82,7 +82,7 @@ export const getStaticPaths = async () => {
     // Add unique paths to the Set
     howtoListData.data.howtoConnection.edges.forEach((howto) => {
       allPaths.add({
-        params: { filename: howto.node._sys.filename },
+        params: { filename: howto.node._sys.filename.replace('.mdx', '') },
       });
     });
   } catch (error) {
