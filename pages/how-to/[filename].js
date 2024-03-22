@@ -73,10 +73,10 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const postsListData = await client.queries.postConnection()
+  const postsListData = await client.queries.howtoConnection()
 
   return {
-    paths: postsListData.data.postConnection.edges.map((howto) => ({
+    paths: postsListData.data.howtoConnection.edges.map((howto) => ({
       params: { filename: howto.node._sys.filename },
     })),
     fallback: false,

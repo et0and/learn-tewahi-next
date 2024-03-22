@@ -74,10 +74,10 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const postsListData = await client.queries.postConnection()
+  const postsListData = await client.queries.tewahitoolsConnection()
 
   return {
-    paths: postsListData.data.postConnection.edges.map((tewahitools) => ({
+    paths: postsListData.data.tewahitoolsConnection.edges.map((tewahitools) => ({
       params: { filename: tewahitools.node._sys.filename },
     })),
     fallback: false,
