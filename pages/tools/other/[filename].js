@@ -50,50 +50,22 @@ const OtherPage = (props) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  let data = {}
-  let query = {}
-  let variables = { relativePath: `${params.filename}.mdx` }
-  try {
-    const res = await client.queries.other(variables)
-    query = res.query
-    data = res.data
-    variables = res.variables
-  } catch {
-    // swallow errors related to document creation
-  }
-
+  const variables = { relativePath: `${params.filename}.md` }
+  const props = await client.queries.page(variables)
   return {
-    props: {
-      variables: variables,
-      data: data,
-      query: query,
-      //myOtherProp: 'some-other-data',
-    },
+    props: { ...props, variables },
   }
 }
 
 export const getStaticPaths = async () => {
-  const allPaths = new Set();
-
-  try {
-    // Fetch data from Tina CMS for the "howto" collection
-    const otherListData = await client.queries.otherConnection();
-
-    // Add unique paths to the Set
-    otherListData.data.otherConnection.edges.forEach((other) => {
-      allPaths.add({
-        params: { filename: other.node._sys.filename.replace('.mdx', '') },
-      });
-    });
-  } catch (error) {
-    console.error('Error fetching data from Tina CMS:', error);
-  }
-
+  const connection = await client.queries.pageConnection()
   return {
-    paths: [...allPaths], // Convert the Set to an array
-    fallback: false,
-  };
-};
+    paths: connection.data.pageConnection.edges.map((post) => ({
+      params: { filename: post.node._sys.filename },
+    })),
+    fallback: 'blocking',
+  }
+}
 
 export default OtherPage
 
