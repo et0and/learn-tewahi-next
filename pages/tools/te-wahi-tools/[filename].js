@@ -73,16 +73,28 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
-/*export const getStaticPaths = async () => {
-  const postsListData = await client.queries.tewahitoolsConnection()
+export const getStaticPaths = async () => {
+  const allPaths = new Set();
+
+  try {
+    // Fetch data from Tina CMS for the "howto" collection
+    const tewahitoolsListData = await client.queries.tewahitoolsConnection();
+
+    // Add unique paths to the Set
+    tewahitoolsListData.data.tewahitoolsConnection.edges.forEach((tewahitools) => {
+      allPaths.add({
+        params: { filename: tewahitools.node._sys.filename },
+      });
+    });
+  } catch (error) {
+    console.error('Error fetching data from Tina CMS:', error);
+  }
 
   return {
-    paths: postsListData.data.tewahitoolsConnection.edges.map((tewahitools) => ({
-      params: { filename: tewahitools.node._sys.filename },
-    })),
+    paths: [...allPaths], // Convert the Set to an array
     fallback: false,
-  }
-}*/
+  };
+};
 
 export default TeWahiToolsPage
 

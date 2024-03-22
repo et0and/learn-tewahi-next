@@ -72,16 +72,28 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
-/*export const getStaticPaths = async () => {
-  const postsListData = await client.queries.printConnection()
+export const getStaticPaths = async () => {
+  const allPaths = new Set();
+
+  try {
+    // Fetch data from Tina CMS for the "howto" collection
+    const printListData = await client.queries.printConnection();
+
+    // Add unique paths to the Set
+    printListData.data.printConnection.edges.forEach((print) => {
+      allPaths.add({
+        params: { filename: print.node._sys.filename },
+      });
+    });
+  } catch (error) {
+    console.error('Error fetching data from Tina CMS:', error);
+  }
 
   return {
-    paths: postsListData.data.printConnection.edges.map((print) => ({
-      params: { filename: print.node._sys.filename },
-    })),
+    paths: [...allPaths], // Convert the Set to an array
     fallback: false,
-  }
-}*/
+  };
+};
 
 export default PrintPage
 

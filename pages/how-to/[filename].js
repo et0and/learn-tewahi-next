@@ -72,16 +72,28 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
-/*export const getStaticPaths = async () => {
-  const postsListData = await client.queries.howtoConnection()
+export const getStaticPaths = async () => {
+  const allPaths = new Set();
+
+  try {
+    // Fetch data from Tina CMS for the "howto" collection
+    const howtoListData = await client.queries.howtoConnection();
+
+    // Add unique paths to the Set
+    howtoListData.data.howtoConnection.edges.forEach((howto) => {
+      allPaths.add({
+        params: { filename: howto.node._sys.filename },
+      });
+    });
+  } catch (error) {
+    console.error('Error fetching data from Tina CMS:', error);
+  }
 
   return {
-    paths: postsListData.data.howtoConnection.edges.map((howto) => ({
-      params: { filename: howto.node._sys.filename },
-    })),
+    paths: [...allPaths], // Convert the Set to an array
     fallback: false,
-  }
-}*/
+  };
+};
 
 export default HowToPage
 

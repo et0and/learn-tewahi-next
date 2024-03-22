@@ -72,16 +72,28 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
-/*export const getStaticPaths = async () => {
-  const postsListData = await client.queries.projectsConnection()
+export const getStaticPaths = async () => {
+  const allPaths = new Set();
+
+  try {
+    // Fetch data from Tina CMS for the "howto" collection
+    const projectsListData = await client.queries.projectsConnection();
+
+    // Add unique paths to the Set
+    projectsListData.data.projectsConnection.edges.forEach((projects) => {
+      allPaths.add({
+        params: { filename: projects.node._sys.filename },
+      });
+    });
+  } catch (error) {
+    console.error('Error fetching data from Tina CMS:', error);
+  }
 
   return {
-    paths: postsListData.data.projectsConnection.edges.map((project) => ({
-      params: { filename: project.node._sys.filename },
-    })),
+    paths: [...allPaths], // Convert the Set to an array
     fallback: false,
-  }
-}*/
+  };
+};
 
 export default ProjectPage
 
