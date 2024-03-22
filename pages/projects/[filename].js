@@ -58,9 +58,9 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const connection = await client.queries.pageConnection()
+  const connection = await client.queries.projectsConnection()
   return {
-    paths: connection.data.pageConnection.edges.map((post) => ({
+    paths: connection.data.projectsConnection.edges.map((post) => ({
       params: { filename: post.node._sys.filename },
     })),
     fallback: 'blocking',
