@@ -55,7 +55,7 @@ export const getStaticProps = async ({ params }) => {
   let query = {}
   let variables = { relativePath: `${params.filename}.mdx` }
   try {
-    const res = await client.queries.tewahitools({ id: params.filename })
+    const res = await client.queries.tewahitools(variables)
     query = res.query
     data = res.data
     variables = res.variables
@@ -68,20 +68,21 @@ export const getStaticProps = async ({ params }) => {
       variables: variables,
       data: data,
       query: query,
+      //mytewahitoolsProp: 'some-tewahitools-data',
     },
   }
 }
 
-export const getStaticPaths = async () => {
+/*export const getStaticPaths = async () => {
   const postsListData = await client.queries.tewahitoolsConnection()
 
   return {
     paths: postsListData.data.tewahitoolsConnection.edges.map((tewahitools) => ({
-      params: { filename: tewahitools.node._sys.id },
+      params: { filename: tewahitools.node._sys.filename },
     })),
     fallback: false,
   }
-}
+}*/
 
 export default TeWahiToolsPage
 
@@ -95,17 +96,17 @@ const PageSection = (props) => {
 }
 
 const iframe = ({ src, height, width }) => {
-    
-    return (
-      <iframe
-        src={src}
-        height={height}
-        width={width}
-        allowFullScreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      />
-    );
-  };
+
+  return (
+    <iframe
+      src={src}
+      height={height}
+      width={width}
+      allowFullScreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    />
+  );
+};
 
 const components = {
   PageSection: PageSection,
