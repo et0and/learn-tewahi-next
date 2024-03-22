@@ -72,28 +72,23 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths = async () => {
-  const allPaths = new Set();
-
-  try {
-    // Fetch data from Tina CMS for the "howto" collection
-    const howtoListData = await client.queries.howtoConnection();
-
-    // Add unique paths to the Set
-    howtoListData.data.howtoConnection.edges.forEach((howto) => {
-      allPaths.add({
-        params: { filename: howto.node._sys.filename.replace('.mdx', '') },
-      });
-    });
-  } catch (error) {
-    console.error('Error fetching data from Tina CMS:', error);
-  }
-
+export const getStaticProps = async ({ params }) => {
+  const variables = { relativePath: `${params.filename}.mdx` }
+ const props = await client.queries.page(variables)
   return {
-    paths: [...allPaths], // Convert the Set to an array
-    fallback: false,
-  };
-};
+    props: { ...props, variables },
+  }
+}
+
+export const getStaticPaths = async () => {
+  const connection = await client.queries.pageConnection()
+  return {
+    paths: connection.data.pageConnection.edges.map((post) => ({
+      params: { filename: post.node._sys.filename },
+    })),
+    fallback: 'blocking',
+  }
+}
 
 export default HowToPage
 
