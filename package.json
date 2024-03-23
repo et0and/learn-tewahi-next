@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Nextra docs template",
   "scripts": {
-    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
+    "check-local": "echo $TINA_PUBLIC_IS_LOCAL",
+    "dev": "cross-env TINA_PUBLIC_IS_LOCAL=true && npm run check-local && tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
     "start": "next start"
   },
@@ -29,6 +30,7 @@
     "@tinacms/cli": "^1.5.42",
     "@types/node": "18.11.10",
     "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.1",
     "typescript": "^4.9.3"
