@@ -4,7 +4,7 @@ This is an online hub created with [Nextra](https://nextra.site).
 
 [![](screenshot.png)](https://learn.tewahi.com)
 
-It uses [Tina](https://tina.io) as a headless CMS to manage content.
+It uses [Tina](https://tina.io) as a headless CMS to manage content. The ability to support native Nextra components such as Callouts is still in development.
 
 ## Deploy your own
 
