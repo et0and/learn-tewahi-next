@@ -1,5 +1,31 @@
 import { defineConfig } from "tinacms";
 
+const PageSection = (props) => {
+  return (
+    <>
+      <h2>{props.heading}</h2>
+      <p>{props.content}</p>
+    </>
+  );
+};
+
+const iframe = ({ src, height, width }) => {
+  return (
+    <iframe
+      src={src}
+      height={height}
+      width={width}
+      allowFullScreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    />
+  );
+};
+
+const components = {
+  PageSection: PageSection,
+  iframe: iframe,
+};
+
 // Your hosting provider likely exposes this as an environment variable
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -32,7 +58,7 @@ export default defineConfig({
         name: "howto",
         label: "How to",
         path: "pages/how-to",
-        format: 'mdx',
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -41,7 +67,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          
+
           {
             type: "rich-text",
             name: "body",
@@ -49,46 +75,47 @@ export default defineConfig({
             isBody: true,
             templates: [
               {
-                name: 'iframe',
-                label: 'YouTube',
+                name: "iframe",
+                label: "YouTube",
                 fields: [
                   {
-                    name: 'src',
-                    label: 'YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)',
-                    type: 'string',
+                    name: "src",
+                    label:
+                      "YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)",
+                    type: "string",
                     required: true,
                   },
                   {
-                    name: 'height',
-                    label: 'Height',
+                    name: "height",
+                    label: "Height",
                     type: "string",
-                    options: ['430'],
+                    options: ["430"],
                     required: true,
                   },
                   {
-                    name: 'width',
-                    label: 'Width',
+                    name: "width",
+                    label: "Width",
                     type: "string",
-                    options: ['100%'],
+                    options: ["100%"],
                     required: true,
                   },
                 ],
               },
-
-              
             ],
           },
         ],
         ui: {
-          // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/how-to/${document._sys.filename}`,
+          router: ({ document }) => {
+            const fileName = document._sys.filename.replace(/\.[^/.]+$/, "");
+            return `/how-to/${fileName}`;
+          },
         },
       },
       {
         name: "projects",
         label: "Projects",
         path: "pages/projects",
-        format: 'mdx',
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -97,7 +124,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          
+
           {
             type: "rich-text",
             name: "body",
@@ -105,46 +132,47 @@ export default defineConfig({
             isBody: true,
             templates: [
               {
-                name: 'iframe',
-                label: 'YouTube',
+                name: "iframe",
+                label: "YouTube",
                 fields: [
                   {
-                    name: 'src',
-                    label: 'YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)',
-                    type: 'string',
+                    name: "src",
+                    label:
+                      "YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)",
+                    type: "string",
                     required: true,
                   },
                   {
-                    name: 'height',
-                    label: 'Height',
+                    name: "height",
+                    label: "Height",
                     type: "string",
-                    options: ['430'],
+                    options: ["430"],
                     required: true,
                   },
                   {
-                    name: 'width',
-                    label: 'Width',
+                    name: "width",
+                    label: "Width",
                     type: "string",
-                    options: ['100%'],
+                    options: ["100%"],
                     required: true,
                   },
                 ],
               },
-
-              
             ],
           },
         ],
         ui: {
-          // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/projects/${document._sys.filename}`,
+          router: ({ document }) => {
+            const fileName = document._sys.filename.replace(/\.[^/.]+$/, "");
+            return `/projects/${fileName}`;
+          },
         },
       },
       {
         name: "print",
         label: "3D printing tools",
         path: "pages/tools/3D-printing",
-        format: 'mdx',
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -153,7 +181,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          
+
           {
             type: "rich-text",
             name: "body",
@@ -161,46 +189,47 @@ export default defineConfig({
             isBody: true,
             templates: [
               {
-                name: 'iframe',
-                label: 'YouTube',
+                name: "iframe",
+                label: "YouTube",
                 fields: [
                   {
-                    name: 'src',
-                    label: 'YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)',
-                    type: 'string',
+                    name: "src",
+                    label:
+                      "YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)",
+                    type: "string",
                     required: true,
                   },
                   {
-                    name: 'height',
-                    label: 'Height',
+                    name: "height",
+                    label: "Height",
                     type: "string",
-                    options: ['430'],
+                    options: ["430"],
                     required: true,
                   },
                   {
-                    name: 'width',
-                    label: 'Width',
+                    name: "width",
+                    label: "Width",
                     type: "string",
-                    options: ['100%'],
+                    options: ["100%"],
                     required: true,
                   },
                 ],
               },
-
-              
             ],
           },
         ],
         ui: {
-          // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/tools/3D-printing/${document._sys.filename}`,
+          router: ({ document }) => {
+            const fileName = document._sys.filename.replace(/\.[^/.]+$/, "");
+            return `/tools/3D-printing/${fileName}`;
+          },
         },
       },
       {
         name: "other",
         label: "Other tools",
         path: "pages/tools/other",
-        format: 'mdx',
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -209,7 +238,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          
+
           {
             type: "rich-text",
             name: "body",
@@ -217,46 +246,47 @@ export default defineConfig({
             isBody: true,
             templates: [
               {
-                name: 'iframe',
-                label: 'YouTube',
+                name: "iframe",
+                label: "YouTube",
                 fields: [
                   {
-                    name: 'src',
-                    label: 'YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)',
-                    type: 'string',
+                    name: "src",
+                    label:
+                      "YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)",
+                    type: "string",
                     required: true,
                   },
                   {
-                    name: 'height',
-                    label: 'Height',
+                    name: "height",
+                    label: "Height",
                     type: "string",
-                    options: ['430'],
+                    options: ["430"],
                     required: true,
                   },
                   {
-                    name: 'width',
-                    label: 'Width',
+                    name: "width",
+                    label: "Width",
                     type: "string",
-                    options: ['100%'],
+                    options: ["100%"],
                     required: true,
                   },
                 ],
               },
-
-              
             ],
           },
         ],
         ui: {
-          // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/tools/other/${document._sys.filename}`,
+          router: ({ document }) => {
+            const fileName = document._sys.filename.replace(/\.[^/.]+$/, "");
+            return `/tools/other/${fileName}`;
+          },
         },
       },
       {
         name: "tewahitools",
         label: "Te Wahi tools",
         path: "pages/tools/te-wahi-tools",
-        format: 'mdx',
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -265,7 +295,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          
+
           {
             type: "rich-text",
             name: "body",
@@ -273,39 +303,40 @@ export default defineConfig({
             isBody: true,
             templates: [
               {
-                name: 'iframe',
-                label: 'YouTube',
+                name: "iframe",
+                label: "YouTube",
                 fields: [
                   {
-                    name: 'src',
-                    label: 'YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)',
-                    type: 'string',
+                    name: "src",
+                    label:
+                      "YouTube link. This needs to be in https://youtube.com/embed/ format. Insert the video ID (comes after v=)",
+                    type: "string",
                     required: true,
                   },
                   {
-                    name: 'height',
-                    label: 'Height',
+                    name: "height",
+                    label: "Height",
                     type: "string",
-                    options: ['430'],
+                    options: ["430"],
                     required: true,
                   },
                   {
-                    name: 'width',
-                    label: 'Width',
+                    name: "width",
+                    label: "Width",
                     type: "string",
-                    options: ['100%'],
+                    options: ["100%"],
                     required: true,
                   },
                 ],
               },
-
-              
             ],
           },
         ],
         ui: {
-          // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/tools/te-wahi-tools/${document._sys.filename}`,
+          router: ({ document }) => {
+            const fileName = document._sys.filename.replace(/\.[^/.]+$/, "");
+            return `/tools/te-wahi-tools/${fileName}`;
+          },
         },
       },
     ],
