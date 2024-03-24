@@ -26,6 +26,8 @@ export default {
     </span>
   ),
 
+  darkMode: false,
+
   search: {
     placeholder: "Search",
   },
